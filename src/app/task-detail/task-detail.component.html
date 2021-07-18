@@ -1,0 +1,13 @@
+<div *ngIf="task">
+    <h3>{{ task.name }}</h3>
+    <div>
+        <label for="task-name">Edit task name: </label>
+        <input id="task-name" [(ngModel)]="task.name" placeholder="task"/>
+    </div>
+    <div>Status: {{ task.status }}</div>
+    <div *ngIf="task.assignedPerson">Assignee: {{ task.assignedPerson }}</div>
+    <ul>Description: 
+        <li *ngFor="let description of task.description">{{ description }}</li>
+    </ul>
+    <div><span>Time: {{ task.timeCreation.hous }}</span>:<span>{{ task.timeCreation.minuts }}</span></div>
+</div>

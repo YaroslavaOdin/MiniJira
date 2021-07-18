@@ -1,0 +1,9 @@
+<ul class="tasksList">
+    <li *ngFor="let task of tasks"
+        (click)="onSelect(task)">
+        <h3>{{ task.name }}</h3>
+    </li>
+</ul>
+
+<app-task-detail [task]="selectedTask"></app-task-detail>
+

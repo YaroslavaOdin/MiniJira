@@ -1,11 +1,23 @@
-<div *ngIf="task">
+<div *ngIf="task" class="task">
     <h3>{{ task.name }}</h3>
     <div>
         <label for="task-name">Edit task name: </label>
         <input id="task-name" [(ngModel)]="task.name" placeholder="task"/>
     </div>
-    <div>Status: {{ task.status }}</div>
-    <div *ngIf="task.assignedPerson">Assignee: {{ task.assignedPerson }}</div>
+    <h4>Status: {{ task.status }}</h4>
+    <label>Edit status:</label>
+    <select [(ngModel)]="task.status">
+        <option *ngFor="let status of statusTask" [value]="status">
+            {{ status }}
+        </option>
+    </select>
+    <h4 *ngIf="task.assignedPerson">Assignee: {{ task.assignedPerson }}</h4>
+    <label>Edit assignee:</label>
+    <select [(ngModel)]="task.assignedPerson">
+        <option *ngFor="let person of personTask" [value]="person">
+            {{ person }}
+        </option>
+    </select>
     <ul>Description: 
         <li *ngFor="let description of task.description">{{ description }}</li>
     </ul>

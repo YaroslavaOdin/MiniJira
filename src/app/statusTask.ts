@@ -1,6 +1,6 @@
 export enum statusTask { 
     Backlog = "Backlog", 
-    Spring = "Sprint",
+    Sprint = "Sprint",
     Estimation = "Estimation",
     InProgress = "In Progress",
     Review = "Review",

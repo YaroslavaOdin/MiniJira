@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
-import { TimeСreation } from '../date';
-
 
 @Component({
   selector: 'app-task',
@@ -15,7 +13,7 @@ export class TaskComponent implements OnInit {
 
   public tasks:Task[] = [];
   public tasksDescription:string[] = [];
-  selectedTask?: Task;
+  public selectedTask?: Task;
 
   constructor(private taskService: TaskService ) { }
 

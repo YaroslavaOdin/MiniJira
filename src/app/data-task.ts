@@ -5,14 +5,14 @@ export const TASKS: Task[] = [
     { 
       name: "Grid: Some icons are incorrect in context menu", 
       status: statusTask.Estimation, 
-      assignedPerson: "Yaraslava Adzinets", 
+      assignedPerson: "Yaraslava", 
       description: ["Icons should be the same as on toolbar"],
       timeCreation: { hous: 8, minuts: 14 }
     },
     {
       name: "Send Logs: An empty value remains in the ‘To’ field", 
       status: statusTask.Review, 
-      assignedPerson: "Aliaksandr Hrushkevich", 
+      assignedPerson: "Sasha", 
       description: ["1. Open the “Sens Logs” popup", "2. Remove address using ‘Backspace’", "An empty value remains in the ‘To’ field"],
       timeCreation: { hous: 9, minuts: 38 }
     },

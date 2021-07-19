@@ -23,6 +23,7 @@
     <li *ngFor="let task of tasks"
         (click)="onSelect(task)">
         <h3>{{ task.name }}</h3>
+        <button (click)="remove(task)">Delete</button>
     </li>
 </ul>
 

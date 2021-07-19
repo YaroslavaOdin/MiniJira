@@ -19,4 +19,8 @@ export class TaskService {
     TASKS.push(newTask);
   }
 
+  removeTask(task:Task) {
+    TASKS.splice(TASKS.indexOf(task), 1);
+  }
+
 }

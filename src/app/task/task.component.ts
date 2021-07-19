@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../moduls/task.service';
-import { Task, statusTask } from '../moduls/task';
+import { TaskService } from '../modules/task.service';
+import { Task, statusTask } from '../modules/task';
 
 @Component({
   selector: 'app-task',
@@ -32,5 +32,9 @@ export class TaskComponent implements OnInit {
   add(name:string, description: string, person?:string) {
     if (!name || !description) { return; }
     this.taskService.addTask(name, description, person);
+  }
+
+  remove(task: Task) {
+    this.taskService.removeTask(task);
   }
 }

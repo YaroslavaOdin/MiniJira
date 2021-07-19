@@ -1,3 +1,24 @@
+<div>
+    <div>
+        <label for="task-name">Edit task name: </label>
+        <input id="new-task-name" #taskName/>
+    </div>
+
+    <div>
+        <label for="task-description">Edit task description: </label>
+        <input id="new-task-description" #taskDescription/>
+    </div>
+
+    <div>
+        <label for="task-person">Assignee: </label>
+        <input id="new-task-person" #taskPerson/>
+    </div>
+
+    <button class="add-button" (click)="add(taskName.value, taskDescription.value, taskPerson.value); taskName.value=''">
+        Add task
+      </button>
+</div>
+
 <ul class="tasksList">
     <li *ngFor="let task of tasks"
         (click)="onSelect(task)">
@@ -6,4 +27,3 @@
 </ul>
 
 <app-task-detail [task]="selectedTask"></app-task-detail>
-

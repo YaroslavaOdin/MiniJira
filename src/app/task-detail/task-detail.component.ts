@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../task';
-import { statusTask } from '../statusTask';
-import { assignedPerson } from '../assignedPerson'; 
+import { Task, statusTask } from '../moduls/task';
 @Component({
   selector: 'app-task-detail',
   templateUrl: './task-detail.component.html',
@@ -12,9 +10,7 @@ export class TaskDetailComponent implements OnInit {
   @Input() task: Task | undefined;
 
   public statusTask: string[] = Object.keys(statusTask);
-  public personTask: string[] = Object.keys(assignedPerson);
-  public selectedStatus?:string = '';
-  public selectedPerson?:string = '';
+  public selectedStatus:string = '';
 
   constructor() { }
 

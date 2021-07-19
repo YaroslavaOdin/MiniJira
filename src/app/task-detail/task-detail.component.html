@@ -1,9 +1,11 @@
 <div *ngIf="task" class="task">
+
     <h3>{{ task.name }}</h3>
     <div>
         <label for="task-name">Edit task name: </label>
         <input id="task-name" [(ngModel)]="task.name" placeholder="task"/>
     </div>
+
     <h4>Status: {{ task.status }}</h4>
     <label>Edit status:</label>
     <select [(ngModel)]="task.status">
@@ -11,15 +13,19 @@
             {{ status }}
         </option>
     </select>
+
     <h4 *ngIf="task.assignedPerson">Assignee: {{ task.assignedPerson }}</h4>
-    <label>Edit assignee:</label>
-    <select [(ngModel)]="task.assignedPerson">
-        <option *ngFor="let person of personTask" [value]="person">
-            {{ person }}
-        </option>
-    </select>
-    <ul>Description: 
-        <li *ngFor="let description of task.description">{{ description }}</li>
-    </ul>
-    <div><span>Time: {{ task.timeCreation.hous }}</span>:<span>{{ task.timeCreation.minuts }}</span></div>
+    <div>
+        <label for="task-person">Edit person: </label>
+        <input id="task-person" [(ngModel)]="task.assignedPerson" placeholder="person"/>
+    </div>
+
+    <h4>Description:</h4>
+    <div>{{ task.description }}</div>
+    <div>
+        <label for="task-description">Edit task description: </label>
+        <input id="task-description" [(ngModel)]="task.description" placeholder="description"/>
+    </div>
+
+    <h4>Time:</h4><span> {{ task.timeCreation | date:'medium' }}</span>
 </div>

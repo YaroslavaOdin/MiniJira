@@ -7,20 +7,34 @@ import { TASKS } from './data-task';
 })
 export class TaskService {
 
-  public TASKS:Task[] = TASKS;
+  public TASKS:Task[] = [];
+
+  constructor() { 
+    if(!localStorage.getItem('tasks')){
+      this.putTasksInStorage(this.TASKS);
+    }
+  }
 
   getTask():Task[] {
-    console.log(TASKS);
-    return TASKS;
+    let tasksString: string | null = localStorage.getItem('tasks');
+    if (tasksString) {
+      this.TASKS = JSON.parse(tasksString);
+    }
+    return this.TASKS;
   }
 
   addTask(name:string, description:string, person?:string): void{
     let newTask:Task = { name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
-    TASKS.push(newTask);
+    this.TASKS.push(newTask);
+    this.putTasksInStorage(this.TASKS);
   }
 
   removeTask(task:Task) {
-    TASKS.splice(TASKS.indexOf(task), 1);
+    this.TASKS.splice(this.TASKS.indexOf(task), 1);
+    this.putTasksInStorage(this.TASKS);
   }
 
+   putTasksInStorage(tasks:Task[]):void {
+    localStorage.setItem('tasks',JSON.stringify(tasks));
+  }
 }

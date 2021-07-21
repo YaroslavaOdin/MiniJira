@@ -1,0 +1,10 @@
+<app-add-task></app-add-task>
+
+<ul class="tasksList">
+    <li *ngFor="let task of tasks">
+        <h3 (click)="onSelect(task)">{{ task.name }}</h3>
+        <button (click)="remove(task)">Delete</button>
+    </li>
+</ul>
+
+<app-task-detail [task]="selectedTask"></app-task-detail>

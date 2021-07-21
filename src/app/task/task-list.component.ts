@@ -3,11 +3,11 @@ import { TaskService } from './services/task.service';
 import { Task, statusTask } from '../models/task';
 
 @Component({
-  selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.css']
 })
-export class TaskComponent implements OnInit {
+export class TaskListComponent implements OnInit {
 
   public task?:Task;
   public statusTask: string[] = Object.keys(statusTask);
@@ -27,11 +27,6 @@ export class TaskComponent implements OnInit {
 
   onSelect(task: Task): void {
     this.selectedTask = task;
-  }
-
-  add(name:string, description: string, person?:string) {
-    if (!name || !description) { return; }
-    this.taskService.addTask(name, description, person);
   }
 
   remove(task: Task) {

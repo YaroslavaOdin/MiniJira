@@ -14,15 +14,14 @@
         <input id="new-task-person" #taskPerson/>
     </div>
 
-    <button class="add-button" (click)="add(taskName.value, taskDescription.value, taskPerson.value); taskName.value=''">
+    <button class="add-button" (click)="add(taskName.value, taskDescription.value, taskPerson.value)">
         Add task
       </button>
 </div>
 
 <ul class="tasksList">
-    <li *ngFor="let task of tasks"
-        (click)="onSelect(task)">
-        <h3>{{ task.name }}</h3>
+    <li *ngFor="let task of tasks">
+        <h3 (click)="onSelect(task)">{{ task.name }}</h3>
         <button (click)="remove(task)">Delete</button>
     </li>
 </ul>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../modules/task.service';
-import { Task, statusTask } from '../modules/task';
+import { TaskService } from './services/task.service';
+import { Task, statusTask } from '../models/task';
 
 @Component({
   selector: 'app-task',
@@ -15,7 +15,7 @@ export class TaskComponent implements OnInit {
   public tasksDescription:string[] = [];
   public selectedTask?: Task;
 
-  constructor(private taskService: TaskService ) { }
+  constructor(private taskService: TaskService) { }
 
   getTask(): void {
     this.tasks = this.taskService.getTask();

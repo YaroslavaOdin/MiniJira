@@ -3,7 +3,10 @@
     <h3>{{ task.name }}</h3>
     <div>
         <label for="task-name">Edit task name: </label>
-        <input id="task-name" [(ngModel)]="task.name" placeholder="task"/>
+        <input id="task-name" 
+            [(ngModel)]="task.name" 
+            placeholder="task"
+        />
     </div>
 
     <h4>Status: {{ task.status }}</h4>
@@ -28,4 +31,8 @@
     </div>
 
     <h4>Time:</h4><span> {{ task.timeCreation | date:'medium' }}</span>
+
+    <div>
+        <button>Save</button>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Task, statusTask } from './task';
-import { TASKS } from './data-task';
+import { Task, statusTask } from '../../models/task';
+import { TASKS } from '../../models/data-task';
  
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,9 @@ export class TaskService {
   public TASKS:Task[] = [];
 
   constructor() { 
-    if(!localStorage.getItem('tasks')){
-      this.putTasksInStorage(this.TASKS);
+    let storageTask = localStorage.getItem('tasks');
+    if (storageTask === '[]') {
+      this.putTasksInStorage(TASKS);
     }
   }
 
@@ -34,7 +35,7 @@ export class TaskService {
     this.putTasksInStorage(this.TASKS);
   }
 
-   putTasksInStorage(tasks:Task[]):void {
-    localStorage.setItem('tasks',JSON.stringify(tasks));
+  putTasksInStorage(tasks:Task[]):void {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 }

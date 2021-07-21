@@ -33,6 +33,6 @@
     <h4>Time:</h4><span> {{ task.timeCreation | date:'medium' }}</span>
 
     <div>
-        <button>Save</button>
+        <button (click)="saveChange(task)">Save</button>
     </div>
 </div>

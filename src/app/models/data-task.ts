@@ -2,6 +2,7 @@ import { Task, statusTask } from "./task";
 
 export const TASKS: Task[] = [
     { 
+      id: 1,
       name: "Grid: Some icons are incorrect in context menu", 
       status: statusTask.Estimation, 
       assignedPerson: "Yaraslava", 
@@ -9,6 +10,7 @@ export const TASKS: Task[] = [
       timeCreation: new Date()
     },
     {
+      id: 2,
       name: "Send Logs: An empty value remains in the ‘To’ field", 
       status: statusTask.Review, 
       assignedPerson: "Sasha", 
@@ -16,6 +18,7 @@ export const TASKS: Task[] = [
       timeCreation: new Date()
     },
     {
+      id: 3,
       name: "Send Logs: The input line goes beyond the “To” field", 
       status: statusTask.Backlog,  
       description: "1.Open the “Sens Logs” popup 2. Type 'longlonglonglonglonglonglo' Address bar is outside input",

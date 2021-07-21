@@ -25,7 +25,7 @@ export class TaskService {
   }
 
   addTask(name:string, description:string, person?:string): void{
-    let newTask:Task = { name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
+    const newTask:Task = { id: this.TASKS[this.TASKS.length - 1].id + 1, name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
     this.TASKS.push(newTask);
     this.putTasksInStorage(this.TASKS);
   }
@@ -37,5 +37,11 @@ export class TaskService {
 
   putTasksInStorage(tasks:Task[]):void {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  updateTask(task: Task): void {
+    const taskIndex = this.TASKS.findIndex(item => item.id == task.id);
+    this.TASKS[taskIndex] = task;
+    this.putTasksInStorage(this.TASKS);
   }
 }

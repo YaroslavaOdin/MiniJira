@@ -20,7 +20,7 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  
-
+  saveChange(task:Task):void {
+    this.taskService.updateTask(task);
+  }
 }

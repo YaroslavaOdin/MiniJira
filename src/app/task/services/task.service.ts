@@ -25,9 +25,17 @@ export class TaskService {
   }
 
   addTask(name:string, description:string, person?:string): void{
-    const newTask:Task = { id: this.TASKS[this.TASKS.length - 1].id + 1, name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
+    const newTask:Task = { id: this.getIdForNewTask(), name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
     this.TASKS.push(newTask);
     this.putTasksInStorage(this.TASKS);
+  }
+
+  getIdForNewTask():number {
+    let id:number = 1;
+    if (this.TASKS.length) {
+      id = this.TASKS[this.TASKS.length - 1].id + 1;
+    } 
+    return id;
   }
 
   removeTask(task:Task) {

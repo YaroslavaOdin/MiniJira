@@ -10,9 +10,9 @@ export enum statusTask {
 
 export interface Task {
     id:number;
-    name: string;
-    status: statusTask | string; 
-    assignedPerson?: string;
-    description: string;
-    timeCreation: Date | string;
+    name:string;
+    status:statusTask | string; 
+    assignedPerson?:string;
+    description:string;
+    timeCreation:Date | string;
 }

@@ -10,19 +10,17 @@ import { Task, statusTask } from '../models/task';
 export class TaskListComponent implements OnInit {
 
   public task?:Task;
-  public statusTask: string[] = Object.keys(statusTask);
   public tasks:Task[] = [];
-  public tasksDescription:string[] = [];
   public selectedTask?: Task;
 
   constructor(private taskService: TaskService) { }
 
-  getTask(): void {
-    this.tasks = this.taskService.getTask();
-  }
-
   ngOnInit(): void {
     this.getTask();
+  }
+
+  getTask(): void {
+    this.tasks = this.taskService.getTask();
   }
 
   onSelect(task: Task): void {

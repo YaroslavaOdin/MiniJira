@@ -1,0 +1,17 @@
+<form>
+    <h2>Create user:</h2>
+    <div>
+        <label for="user-name">Edit user name: </label>
+        <input id="new-user-name" #userName/>
+    </div>
+
+    <div>
+        <label for="surname-name">Edit surname: </label>
+        <input id="new-surname-name" #surnameName/>
+    </div>
+
+    <button class="add-button" 
+    (click)="add(userName.value, surnameName.value);">
+        Add user
+    </button>
+</form>

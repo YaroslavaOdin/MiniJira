@@ -1,3 +1,29 @@
 .task {
-    margin: 50px;
+    margin: 40px;
+    margin-right: 10px;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 30px;
+}
+
+button {
+    height: 25px;
+    margin-top: 22px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: #eee;
+    border-radius: 4px;
+    font-size: 16px;
+    padding-top: 2px;
+}
+ 
+button:hover {
+    color: white;
+    background-color: #42545C;
+}
+
+h2 {
+    text-align: center;
 }

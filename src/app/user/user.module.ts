@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { CoreModule } from '../core/list/core.module';
 @NgModule({
   declarations: [
     UserListComponent,
@@ -12,7 +13,8 @@ import { AddUserComponent } from './add-user/add-user.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   exports:[
     UserListComponent

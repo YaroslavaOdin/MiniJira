@@ -4,6 +4,7 @@ import { TaskListComponent } from './task-list.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { CoreModule } from '../core/list/core.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AddTaskComponent } from './add-task/add-task.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   exports:[
     TaskListComponent

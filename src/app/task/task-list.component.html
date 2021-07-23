@@ -1,10 +1,10 @@
 <app-add-task></app-add-task>
-<ul class="tasksList">
-    <h2>Task list</h2>
-    <li *ngFor="let task of tasks">
-        <h3 (click)="onSelect(task)">{{ task.name }}</h3>
-        <button (click)="remove(task)">Delete</button>
-    </li>
-</ul>
+
+<app-list [list]="tasks" [name]="'task'" [itemTmpl]="itemTmpl"></app-list>
+
+<ng-template #itemTmpl let-context="context">
+  <h3 (click)="onSelect(context.item)">{{ context.item.name }}</h3>
+  <button (click)="remove(context.item)">Delete</button>
+</ng-template>
 
 <app-task-detail [task]="selectedTask"></app-task-detail>

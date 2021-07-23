@@ -1,0 +1,13 @@
+<ul class="List">
+  <h2>List {{ name }}</h2>
+  <ng-container
+    *ngFor="let item of list"
+    [ngTemplateOutlet]="itemTmpl"
+    [ngTemplateOutletContext]="{
+      context: {
+        item: item
+      }
+    }"
+  >
+  </ng-container>
+</ul>

@@ -5,14 +5,12 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { CoreModule } from '../core/list/core.module';
-import { HoverDirective } from '../hover.directive';
 
 @NgModule({
   declarations: [
     TaskListComponent,
     TaskDetailComponent,
-    AddTaskComponent,
-    HoverDirective
+    AddTaskComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +18,7 @@ import { HoverDirective } from '../hover.directive';
     CoreModule
   ],
   exports:[
-    TaskListComponent,
-    HoverDirective
+    TaskListComponent
   ]
 })
 export class TaskModule { }

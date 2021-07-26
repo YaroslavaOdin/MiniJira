@@ -12,6 +12,7 @@ export class TaskListComponent implements OnInit {
   public task?:Task;
   public tasks:Task[] = [];
   public selectedTask?: Task;
+  public searchString: string = "";
 
   constructor(private taskService: TaskService) { }
 
@@ -27,7 +28,11 @@ export class TaskListComponent implements OnInit {
     this.selectedTask = task;
   }
 
-  remove(task: Task) {
+  remove(task: Task): void {
     this.taskService.removeTask(task);
+  }
+
+  search(searchTask: any): void {
+    this.searchString = searchTask.value; 
   }
 }

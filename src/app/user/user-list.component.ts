@@ -12,6 +12,7 @@ export class UserListComponent implements OnInit {
   public users: User[] = [];
   public user?: User;
   public selectedUser?: User;
+  public searchString: string = "";
 
   constructor(private UserService: UserService) { }
 
@@ -29,5 +30,9 @@ export class UserListComponent implements OnInit {
 
   remove(user: User) {
     this.UserService.removeUser(user);
+  }
+
+  search(searchUser: any): void {
+    this.searchString = searchUser.value; 
   }
 }

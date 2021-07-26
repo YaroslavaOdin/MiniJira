@@ -20,5 +20,4 @@ export class HoverDirective {
   setColor(value: string): void {
     this.el.nativeElement.style.color = `${value}`
   }
-
 }

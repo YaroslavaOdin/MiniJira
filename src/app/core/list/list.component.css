@@ -3,6 +3,15 @@ h2 {
     margin-left: -40px;
 }
 
+ul {
+    margin-right: 10px;
+    margin-left: 40px;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    padding: 10px 10px;
+    padding-left: 40px;
+}
+
 li {
     display: flex;
     list-style-type: none;

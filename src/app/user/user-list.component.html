@@ -2,7 +2,7 @@
 
 <app-search (change)="search($event.target)"></app-search>
 
-<app-list [list]="users | filter: searchString : 'user'" [name]="'user'" [itemTmpl]="itemTmpl"></app-list>
+<app-list [list]="users$ | async | filter: searchString : 'user'" [name]="'user'" [itemTmpl]="itemTmpl"></app-list>
 
 <ng-template #itemTmpl let-context="context">
   <h3 [appHover]="'red'" (click)="onSelect(context.item)">{{ context.item.name }} {{ context.item.surname }}</h3>

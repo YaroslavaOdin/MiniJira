@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
 import { User, Specialization } from 'src/app/models/user'; 
 import { USERS } from 'src/app/models/data-user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public USERS: User[] = [];
+  private USERS: User[] = [];
+  private _users$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  public users$ = this._users$.asObservable();
 
   constructor() { 
-    let storageUser = localStorage.getItem('users');
-    if (storageUser === null || storageUser === '[]') {
+    let storageUser = this.getUsers();
+    this._users$.next(storageUser);
+    if (storageUser === null || storageUser === []) {
       this.putTasksInStorage(USERS);
     }
   }
 
   getUsers():User[] {
-    let tasksString: string | null = localStorage.getItem('users');
-    if (tasksString) {
-      this.USERS = JSON.parse(tasksString);
+    let usersString: string | null = localStorage.getItem('users');
+    if (usersString) {
+      const users = JSON.parse(usersString);
+      return users;
     }
-    return this.USERS;
+    return [];
   }
 
   putTasksInStorage(users:User[]):void {
@@ -31,18 +36,22 @@ export class UserService {
   removeUser(user:User) {
     this.USERS.splice(this.USERS.indexOf(user), 1);
     this.putTasksInStorage(this.USERS);
+    this._users$.next(this.USERS);
   }
 
   updateUser(user: User): void {
     const userIndex = this.USERS.findIndex(item => item.id == user.id);
     this.USERS[userIndex] = user;
     this.putTasksInStorage(this.USERS);
+    this._users$.next(this.USERS);
   }
 
-  addUser(name:string, surname:string): void{
+  addUser(name:string, surname:string): void {
+    const users = this.getUsers();
     const newUser:User = { id: this.getIdForNewUser(), name: name, surname: surname, specialization: Specialization.FrontEndDev, tasks: []}
-    this.USERS.push(newUser);
-    this.putTasksInStorage(this.USERS);
+    users.push(newUser);
+    this.putTasksInStorage(users);
+    this._users$.next(users);
   }
 
   getIdForNewUser():number {

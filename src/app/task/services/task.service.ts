@@ -1,33 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Task, statusTask } from '../../models/task';
 import { TASKS } from '../../models/data-task';
+import { BehaviorSubject } from 'rxjs';
  
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  public TASKS:Task[] = [];
+  private TASKS:Task[] = [];
+  private _tasks$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
+  public tasks$ = this._tasks$.asObservable();
 
   constructor() { 
-    let storageTask = localStorage.getItem('tasks');
-    if (storageTask === '[]') {
+    let storageTask = this.getTasks();
+    this._tasks$.next(storageTask);
+    if (storageTask === []) {
       this.putTasksInStorage(TASKS);
     }
   }
 
-  getTask():Task[] {
+  getTasks():Task[] {
     let tasksString: string | null = localStorage.getItem('tasks');
     if (tasksString) {
-      this.TASKS = JSON.parse(tasksString);
+      const tasks = JSON.parse(tasksString);
+      return tasks;
     }
-    return this.TASKS;
+    return [];
   }
 
-  addTask(name:string, description:string, person?:string): void{
+  addTask(name:string, description:string, person?:string): void {
+    const tasks = this.getTasks();
     const newTask:Task = { id: this.getIdForNewTask(), name: name, status: statusTask.Backlog, assignedPerson: person, description: description, timeCreation: new Date() }
-    this.TASKS.push(newTask);
-    this.putTasksInStorage(this.TASKS);
+    tasks.push(newTask);
+    this.putTasksInStorage(tasks);
+    this._tasks$.next(tasks);
   }
 
   getIdForNewTask():number {
@@ -41,6 +48,7 @@ export class TaskService {
   removeTask(task:Task) {
     this.TASKS.splice(this.TASKS.indexOf(task), 1);
     this.putTasksInStorage(this.TASKS);
+    this._tasks$.next(this.TASKS);
   }
 
   putTasksInStorage(tasks:Task[]):void {
@@ -51,5 +59,6 @@ export class TaskService {
     const taskIndex = this.TASKS.findIndex(item => item.id == task.id);
     this.TASKS[taskIndex] = task;
     this.putTasksInStorage(this.TASKS);
+    this._tasks$.next(this.TASKS);
   }
 }

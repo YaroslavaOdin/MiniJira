@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from 'src/app/models/user';
+import { FilterContext, UserFilterStrategy } from '../core/list/pipes/strategy';
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +16,7 @@ export class UserListComponent {
   public selectedUser?: User;
   public searchString: string = "";
   public subscription: any;
+  public filterContext =  new FilterContext(new UserFilterStrategy());
 
   constructor(private UserService: UserService) { }
 
